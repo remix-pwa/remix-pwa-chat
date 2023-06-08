@@ -1,14 +1,14 @@
 import { Transition, Dialog, Combobox } from "@headlessui/react";
-import { User } from "@prisma/client";
-import type { ActionFunction } from "@remix-run/node";
 import { redirect, type LoaderFunction, json } from "@remix-run/node";
 import { Outlet, useFetcher, useLoaderData, useLocation, useNavigate } from "@remix-run/react";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Talk from "talkjs";
-import { ConversationData } from "talkjs/all";
 import { generateConversationId } from "~/utils/idGeneration";
 import { db } from "~/utils/server/db.server";
 import { getUser, logout } from "~/utils/server/session.server";
+
+import type { User } from "@prisma/client";
+import type { ActionFunction } from "@remix-run/node";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -79,7 +79,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     return json({ user, conversations: data, users: allUsers }, { status: 200 });
   }
 
-  
+
 
   return logout(request);
 }
@@ -154,18 +154,14 @@ export default () => {
     Talk.ready.then(() => setChatLoaded(true));
 
     if (chatLoaded) {
-      const currentUser = new Talk.User({
+      // synchronize the user with TalkJS. Creates a new user if one doesn't exist.
+      new Talk.User({
         id: loaderData.user.id,
         name: loaderData.user.name,
         email: loaderData.user.email,
         photoUrl: loaderData.user.avatar,
         welcomeMessage: null,
         role: "default",
-      });
-
-      const session = new Talk.Session({
-        appId: 'YOUR_APP_ID',
-        me: currentUser,
       });
     }
 
@@ -282,7 +278,9 @@ export default () => {
         )}
 
         <div className="flex items-center justify-between border-t px-6 pt-4 h-[84px] dark:border-gray-700">
-          <button className="group flex items-center space-x-4 rounded-md px-4 py-2 text-gray-600 dark:text-gray-300">
+          <button className="group flex items-center space-x-4 rounded-md px-4 py-2 text-gray-600 dark:text-gray-300" onClick={() => {
+            navigate('/logout')
+          }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
