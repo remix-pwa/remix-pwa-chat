@@ -4,7 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "run-p dev:*",
-    "dev:worker": "esbuild ./app/entry.worker.ts --platform=node --outfile=./public/entry.worker.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
+    "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
     "dev:remix": "remix dev",
     "start": "remix-serve build",
     "typecheck": "tsc"
