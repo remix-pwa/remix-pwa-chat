@@ -12,7 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.15",
     "@prisma/client": "^4.15.0",
-    "@remix-pwa/push": "^0.2.2",
+    "@remix-pwa/push": "^0.3.0",
     "@remix-pwa/sw": "^0.3.4",
     "@remix-run/css-bundle": "^1.16.1",
     "@remix-run/node": "^1.16.1",
