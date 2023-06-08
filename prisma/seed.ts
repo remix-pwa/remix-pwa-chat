@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import { appId, secretKey } from "./prisma.env";
+
+const appId = process.env.TALKJS_APP_ID;
+const secretKey = process.env.TALKJS_SECRET_KEY;
 
 const db = new PrismaClient();
 
