@@ -44,7 +44,7 @@ export default () => {
     <div className="relative py-16">
       <div className="container relative m-auto px-6 text-gray-500 md:px-12 xl:px-40">
         <div className="m-auto space-y-8 md:w-8/12 lg:w-6/12 xl:w-6/12">
-          <img src="https://tailus.io/sources/blocks/simplecard/preview/images/tailus.svg" loading="lazy" className="ml-4 w-36" alt="tailus logo" />
+          <img src="" loading="lazy" className="ml-4 w-36" alt="tailus logo" />
           <div className="rounded-3xl border border-gray-100 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 backdrop-blur-2xl">
             <div className="p-8 py-12 sm:p-16">
               <h2 className="mb-8 text-2xl font-bold text-gray-800 dark:text-white">Sign in to your account</h2>
